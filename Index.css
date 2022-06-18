@@ -1,0 +1,64 @@
+:root 
+{
+    --ColorA: #2c3e50;
+    --ColorB: #bdc3c7;
+    --ColorC: #1abc9c;
+    --ColorD: #f1c40f;
+}
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+html , body
+{
+    overflow: hidden;
+}
+body
+{
+    background-color: var(--ColorA);
+}
+.Main
+{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.Form
+{
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    border-radius: 10px;
+    background-color: var(--ColorC);
+}
+.Form input , .BTN1
+{
+    padding: 10px 10px;
+    outline: none;
+    border: none;
+    margin: 10px 0px;
+    border-radius: 5px;
+}
+.BTN1
+{
+    background-color: var(--ColorD);
+}
+
+.fa-right-from-bracket
+{
+    color: var(--ColorA);
+    position:relative;
+    transform: translate(-100px);
+    z-index: -100;
+}
+.BTN1:hover > .fa-right-from-bracket
+{
+    padding-right: 10px;
+    z-index: 100;
+    transform: translate(0px);
+    transition: all 0.3s ease;
+}
