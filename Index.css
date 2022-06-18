@@ -4,6 +4,7 @@
     --ColorB: #bdc3c7;
     --ColorC: #1abc9c;
     --ColorD: #f1c40f;
+    --ColorE: #34495e;
 }
 *
 {
@@ -14,7 +15,7 @@
 }
 html , body
 {
-    overflow: hidden;
+    overflow: auto;
 }
 body
 {
@@ -47,7 +48,6 @@ body
 {
     background-color: var(--ColorD);
 }
-
 .fa-right-from-bracket
 {
     color: var(--ColorA);
@@ -61,4 +61,70 @@ body
     z-index: 100;
     transform: translate(0px);
     transition: all 0.3s ease;
+}
+.X , .Game-Box i
+{
+    color: #1abc9c;
+}
+.O , .Game-Box i
+{
+    color: #f1c40f;
+}
+.Turns
+{
+    color: white;
+    padding: 10px 0px;
+}
+.Turns , .Box
+{
+    border-radius: 10px;
+    background-color: var(--ColorE);
+    box-shadow: 0px 5px 5px rgba(63, 121, 207, 0.459);
+}
+.Game-Box
+{
+    display: grid;
+    grid-template-columns: repeat(3,130px);
+    grid-gap: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.Game-Box span , .Game-Box i , .Game-Box .Box
+{
+    font-size: 2rem;
+    font-weight: bolder;
+}
+.Box
+{
+    height: 130px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Game-Box
+{
+    transform:scale(0);
+    width: 0;
+}
+.Slide
+{
+    transform: scale(1);
+    transition: all 1s ease;
+}
+@media (max-width:450px)
+{
+    .Game-Box
+    {
+        grid-template-columns: repeat(3,80px);
+    }
+    .Box
+    {
+        height: 80px;
+    }
+    .Turns P
+    {
+        font-size: 10PX;
+    }
 }
