@@ -113,6 +113,12 @@ body
     transform: scale(1);
     transition: all 1s ease;
 }
+.fa-rotate-right
+{
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
 @media (max-width:450px)
 {
     .Game-Box
