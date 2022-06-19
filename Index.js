@@ -1,5 +1,9 @@
 let PLYR;
 let P1 , P2;
+let Tie=0;
+let P1Won=0;
+let P2Won=0;
+let Tracker=0;
 let RandomPlayerGenerator=()=>
 {
     return Math.floor(Math.random()*2);
@@ -9,6 +13,13 @@ let GetPlayerNames=()=>
 {
     P1=document.querySelector('.P1').value;
     P2=document.querySelector('.P2').value;
+
+    document.querySelector('.P1-Status .Name').innerHTML=P1;
+    document.querySelector('.P2-Status .Name').innerHTML=P2;
+
+    document.querySelector('.P1-Status .Points').innerHTML=P1Won;
+    document.querySelector('.P2-Status .Points').innerHTML=P2Won;
+    document.querySelector('.Tie-Status .Points').innerHTML=Tie;
 
     let Form=document.querySelector('.Form').style.display="none";
     let GameBox=document.querySelector('.Game-Box').style.display="grid";
@@ -59,6 +70,16 @@ let Decision=(Sign , Player)=>
                 {
                     document.querySelector('.Heading').innerHTML=`Hurray 🎉🥂 ${Player} Won`;
                     document.querySelector('.Heading').style.display="grid";
+                    if(Sign=='X')
+                    {
+                        document.querySelector('.P1-Status').classList.add('Alpha');
+                        P1Won++;
+                    }
+                    if(Sign=='O')
+                    {
+                        document.querySelector('.P2-Status').classList.add('Alpha');
+                        P2Won++;
+                    }
                     X.forEach(Value=>
                     {
                         Value.classList.add('Make-None');
@@ -73,7 +94,17 @@ let Decision=(Sign , Player)=>
                 if(Count2==3)
                 {
                     document.querySelector('.Heading').innerHTML=`Hurray 🎉🥂 ${Player} Won`;
-                    document.querySelector('.Heading').style.display="grid";
+                    document.querySelector('.Heading').style.display="grid"; 
+                    if(Sign=='X')
+                    {
+                        document.querySelector('.P1-Status').classList.add('Alpha');
+                        P1Won++;
+                    }
+                    if(Sign=='O')
+                    {
+                        document.querySelector('.P2-Status').classList.add('Alpha');
+                        P2Won++;
+                    }
                     X.forEach(Value=>
                     {
                         Value.classList.add('Make-None');
@@ -94,7 +125,17 @@ let Decision=(Sign , Player)=>
             if(Count3==3)
             {
                 document.querySelector('.Heading').innerHTML=`Hurray 🎉🥂 ${Player} Won`;
-                document.querySelector('.Heading').style.display="grid";
+                document.querySelector('.Heading').style.display="grid";  
+                if(Sign=='X')
+                {
+                    document.querySelector('.P1-Status').classList.add('Alpha'); 
+                    P1Won++;
+                }
+                if(Sign=='O')
+                {
+                    document.querySelector('.P2-Status').classList.add('Alpha');
+                    P2Won++;
+                }
                 X.forEach(Value=>
                 {
                     Value.classList.add('Make-None');
@@ -114,6 +155,16 @@ let Decision=(Sign , Player)=>
             {
                 document.querySelector('.Heading').innerHTML=`Hurray 🎉🥂 ${Player} Won`;
                 document.querySelector('.Heading').style.display="grid";
+                if(Sign=='X')
+                {
+                    document.querySelector('.P1-Status').classList.add('Alpha');
+                    P1Won++;
+                }
+                if(Sign=='O')
+                {
+                    document.querySelector('.P2-Status').classList.add('Alpha');
+                    P2Won++;
+                }
                 X.forEach(Value=>
                 {
                     Value.classList.add('Make-None');
@@ -135,7 +186,9 @@ X.forEach(element => {
             {
                 document.getElementById(element.id).innerHTML='X';
                 Decision('X' , P1);
+                document.querySelector('.P1-Status .Points').innerHTML=P1Won;
                 document.querySelector('.Turns p').innerHTML=`${P2} Turn`;
+                Tracker++;
                 PLYR=1;
             }
         }
@@ -145,9 +198,16 @@ X.forEach(element => {
             {
                 document.getElementById(element.id).innerHTML='O';
                 Decision('O' , P2);
+                document.querySelector('.P2-Status .Points').innerHTML=P2Won;
                 document.querySelector('.Turns p').innerHTML=`${P1} Turn`;
+                Tracker++;
                 PLYR=0;
             }
+        }
+        if(Tracker==9)
+        {
+            Tie++;
+            document.querySelector('.Tie-Status .Points').innerHTML=Tie;
         }
     });
 });
@@ -172,7 +232,9 @@ document.querySelector('.fa-rotate-right').addEventListener('click' , Clear=()=>
    X.forEach(Value=>
     {
         document.getElementById(Value.id).innerHTML='';
-        document.querySelector('.Heading').style.display="none";
+        document.querySelector('.Heading').innerHTML="Nothing Predictable Yet !!";
+        document.querySelector('.P1-Status').classList.remove('Alpha');
         Value.classList.remove('Make-None');
+        Tracker=0;
     });
 });

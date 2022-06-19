@@ -26,7 +26,6 @@ body
     display: flex; 
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     height: 100vh;
 }
 .Form
@@ -120,6 +119,61 @@ body
     border-radius: 5px;
     padding: 5px;
 }
+.Make-None
+{
+    pointer-events: none;
+}
+.Heading
+{
+    grid-column-start: 1;
+    grid-column-end: -1;
+    background-color: var(--ColorD);
+    color: #34495e;
+    padding: 10px;
+    border-radius: 10px;
+    /* display: none; */
+}
+.P1-Status , .P2-Status , .Tie-Status
+{
+    color: var(--ColorA);
+    border-radius: 10px;
+}
+.P1-Status
+{
+    background-color: var(--ColorC);
+}
+.Tie-Status
+{
+    background-color: var(--ColorB);
+}
+.P2-Status
+{
+    background-color: var(--ColorD);
+}
+
+.Alpha .Points , .Alpha .Points
+{
+    position:relative;
+    animation-name: TopUp;
+    animation-duration: .3s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+@keyframes TopUp
+{
+    from 
+    {
+        transform: translateY(20px);
+        z-index: -100;
+    }
+    to
+    {
+        transform: translateY(0px);
+        z-index: 100;
+    }
+}
+
 @media (max-width:450px)
 {
     .Game-Box
